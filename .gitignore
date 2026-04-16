@@ -1,0 +1,29 @@
+# Variables d'environnement (fichiers sensibles)
+.env
+.env.*
+*.env
+
+# Logs
+*.log
+logs/
+
+# Dépendances Node.js
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Docker volumes locaux
+data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
