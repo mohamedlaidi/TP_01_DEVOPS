@@ -16,10 +16,8 @@ jobs:
   test-backend:
     runs-on: ubuntu-24.04
     steps:
-      # Checkout the repository source code including submodules (backend/simple-api is a submodule)
+      # Checkout the repository source code
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
       # Set up JDK 21 (temurin distribution, same as our Docker image)
       - name: Set up JDK 21
