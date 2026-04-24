@@ -3,6 +3,7 @@
   docker_container:
     name: httpd
     image: mohamedlaidi/tp-devops-httpd:latest
+    pull: true
     ports:
       - "80:80"
     networks:

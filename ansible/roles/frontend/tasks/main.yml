@@ -3,6 +3,7 @@
   docker_container:
     name: frontend
     image: mohamedlaidi/tp-devops-frontend:latest
+    pull: true
     networks:
       - name: front-network
     state: started

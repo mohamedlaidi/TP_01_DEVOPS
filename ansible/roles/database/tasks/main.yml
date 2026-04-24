@@ -3,6 +3,7 @@
   docker_container:
     name: database
     image: mohamedlaidi/tp-devops-database:latest
+    pull: true
     env:
       POSTGRES_DB: "db"
       POSTGRES_USER: "usr"

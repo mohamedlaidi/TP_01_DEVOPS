@@ -3,6 +3,7 @@
   docker_container:
     name: backend
     image: mohamedlaidi/tp-devops-simple-api:latest
+    pull: true
     env:
       POSTGRES_DB: "db"
       POSTGRES_USER: "usr"
