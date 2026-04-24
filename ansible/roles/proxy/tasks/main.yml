@@ -1,0 +1,11 @@
+---
+- name: Run proxy
+  docker_container:
+    name: httpd
+    image: mohamedlaidi/tp-devops-httpd:latest
+    ports:
+      - "80:80"
+    networks:
+      - name: front-network
+    state: started
+    recreate: true

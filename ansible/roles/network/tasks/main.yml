@@ -1,0 +1,8 @@
+---
+- name: Create front-network
+  docker_network:
+    name: front-network
+
+- name: Create back-network
+  docker_network:
+    name: back-network

@@ -1,0 +1,13 @@
+---
+- name: Run database
+  docker_container:
+    name: database
+    image: mohamedlaidi/tp-devops-database:latest
+    env:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "usr"
+      POSTGRES_PASSWORD: "pwd"
+    networks:
+      - name: back-network
+    state: started
+    recreate: true

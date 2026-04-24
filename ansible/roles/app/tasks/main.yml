@@ -1,0 +1,14 @@
+---
+- name: Run backend app
+  docker_container:
+    name: backend
+    image: mohamedlaidi/tp-devops-simple-api:latest
+    env:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "usr"
+      POSTGRES_PASSWORD: "pwd"
+    networks:
+      - name: back-network
+      - name: front-network
+    state: started
+    recreate: true

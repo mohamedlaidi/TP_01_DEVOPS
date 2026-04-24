@@ -27,3 +27,7 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Clés SSH
+ansible/id_rsa
+*.pem

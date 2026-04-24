@@ -82,3 +82,31 @@ jobs:
           context: ./httpd
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-httpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
+
+  # -------------------------------------------------------
+  # JOB 3 : Deploy application on server via Ansible
+  # Only runs on main branch after images are pushed
+  # -------------------------------------------------------
+  deploy:
+    needs: build-and-push-docker-image
+    runs-on: ubuntu-24.04
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ansible
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 400 ~/.ssh/id_rsa
+          ssh-keyscan -H mohamed-abdelaziz-el-abbes.laidi.takima.school >> ~/.ssh/known_hosts
+
+      - name: Run Ansible playbook
+        run: ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml
