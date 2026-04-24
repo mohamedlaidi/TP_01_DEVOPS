@@ -8,6 +8,8 @@ on:
       - develop
   # Also run on pull requests targeting any branch
   pull_request:
+  # Allow manual trigger for deployment
+  workflow_dispatch:
 
 jobs:
   # -------------------------------------------------------
@@ -93,12 +95,12 @@ jobs:
 
   # -------------------------------------------------------
   # JOB 3 : Deploy application on server via Ansible
-  # Only runs on main branch after images are pushed
+  # Only runs manually via workflow_dispatch
   # -------------------------------------------------------
   deploy:
     needs: build-and-push-docker-image
     runs-on: ubuntu-24.04
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch'
 
     steps:
       - name: Checkout code
