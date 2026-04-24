@@ -1,0 +1,9 @@
+---
+- name: Run frontend
+  docker_container:
+    name: frontend
+    image: mohamedlaidi/tp-devops-frontend:latest
+    networks:
+      - name: front-network
+    state: started
+    recreate: true

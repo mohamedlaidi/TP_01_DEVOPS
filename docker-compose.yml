@@ -24,6 +24,12 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     restart: unless-stopped
 
+  frontend:
+    build: ./frontend
+    networks:
+      - front-network
+    restart: unless-stopped
+
   httpd:
     build: ./httpd
     ports:
